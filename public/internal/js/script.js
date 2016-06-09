@@ -1,4 +1,14 @@
 $(document).ready(function() {
+    function startFunction(){
+        var date = new Date();
+        var month = date.getMonth();
+        month = month + 1;
+        var monthBtn = $(".month-btn[data-month='" + month +"']");
+
+        ajaxHandling.monthBtnClick(monthBtn);
+    }
+
+    startFunction();
 
     //click on month -> get data with ajax
     $('.month-btn').on('click', function(){
