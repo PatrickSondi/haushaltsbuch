@@ -2,7 +2,7 @@ var validation = {};
 
 (function($) {
     validation = function (){
-        var model = { 
+        var model = {
             addValueValidation: addValueValidation
         }
 
@@ -11,7 +11,7 @@ var validation = {};
             if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
                 // Allow: Ctrl+A
                 (e.keyCode == 65 && e.ctrlKey === true) ||
-                // Allow: Ctrl+C
+                // Allow: Ctrl+C 
                 (e.keyCode == 67 && e.ctrlKey === true) ||
                 // Allow: Ctrl+V
                 (e.keyCode == 86 && e.ctrlKey === true) ||
