@@ -28,7 +28,6 @@ var validation = {};
             }
         }
 
-
         return model;
     }();
 })(jQuery);
