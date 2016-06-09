@@ -60,10 +60,6 @@ body{
     font-weight: lighter;
 }
 
-#users-login .panel-heading .glyphicon-lock{
-    vertical-align: -2px;
-}
-
 #users-login .panel-body {
     color: #777;
 }

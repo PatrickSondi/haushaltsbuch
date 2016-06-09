@@ -8,7 +8,8 @@ $(document).ready(function() {
         ajaxHandling.monthBtnClick(monthBtn);
     }
 
-    startFunction();
+    if($("#users-login").length == 0)
+        startFunction();
 
     //click on month -> get data with ajax
     $('.month-btn').on('click', function(){

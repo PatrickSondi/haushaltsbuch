@@ -3,7 +3,7 @@
 	<div class="col-md-4">
 		<div class="panel">
 		  	<div class="panel-heading">
-		  		<p class="panel-title"><span class="glyphicon glyphicon-lock"></span> Login</p>
+		  		<p class="panel-title"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Login</p>
 		 	</div>
 		  	<div class="panel-body">
 				<form role="form" method="post">
@@ -16,7 +16,7 @@
 			    		<?php echo $this->form->password ?>
 			  		</div>
 					<?php echo $this->partial('_partials/messenger.phtml', array('flashMessenger' => $this->flashMessenger)) ?>
-		  			<button type="submit" class="btn btn-default">Login</button>
+		  			<button type="submit" class="btn btn-primary">Login</button>
 				</form>
 		  	</div>
 		</div>

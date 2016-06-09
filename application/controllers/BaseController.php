@@ -19,6 +19,7 @@ class BaseController extends Zend_Controller_Action {
         $this->view->headScript()->appendFile('/external/bootstrap/js/bootstrap.min.js');
 
         $this->view->headLink()->appendStylesheet('/external/bootstrap/css/bootstrap.min.css');
+        $this->view->headLink()->appendStylesheet('/external/font-awesome/css/font-awesome.min.css');
 
         $this->view->headScript()->appendFile('/internal/js/script.js');
         $this->view->headScript()->appendFile('/internal/js/ajaxHandling.js');
