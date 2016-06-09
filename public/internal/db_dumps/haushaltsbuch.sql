@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 09. Jun 2016 um 11:36
+-- Erstellungszeit: 09. Jun 2016 um 15:58
 -- Server-Version: 10.0.17-MariaDB
 -- PHP-Version: 5.6.14
 
@@ -42,6 +42,26 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `current_debts`
+--
+
+CREATE TABLE `current_debts` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `value` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `current_debts`
+--
+
+INSERT INTO `current_debts` (`id`, `user_id`, `value`) VALUES
+(1, 1, 456),
+(2, 2, 471);
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `money_entries`
 --
 
@@ -59,13 +79,25 @@ CREATE TABLE `money_entries` (
 --
 
 INSERT INTO `money_entries` (`id`, `description`, `value`, `user_id`, `category_id`, `month_id`) VALUES
-(1, 'Spar 10.01.2016', 15.12, 1, 2, 1),
-(2, 'Lampen 20.02.2016', 140, 1, 1, 1),
-(3, 'Spar ', 96.93, 2, 2, 1),
-(4, 'Möbel', 149.98, 2, 1, 1),
-(5, 'Hofer', 123, 1, 1, 1),
-(15, 'Spar', 1, 1, 1, 2),
-(26, 'Billa', 23.23, 2, 1, 1);
+(33, 'Spar', 5, 2, 1, 6),
+(34, 'Spar', 5, 2, 1, 5),
+(35, 'Spar', 10, 1, 1, 5),
+(36, 'Spar', 10, 1, 1, 6),
+(37, 'Hofer', 2, 2, 1, 6),
+(38, 'Billa', 10, 1, 1, 6),
+(42, '', 12, 2, 1, 6),
+(45, 'spar', 123, 1, 1, 1),
+(46, 'hofer', 230, 2, 1, 1),
+(47, 'hofer', 123, 1, 1, 2),
+(48, 'spar', 32, 2, 1, 2),
+(49, 'Spar', 30, 1, 1, 3),
+(50, 'hofer', 10, 2, 1, 3),
+(51, 'hofer', 130, 1, 1, 4),
+(52, 'spar', 30, 2, 1, 4),
+(53, 'schulden bezahlt', 115, 2, 1, 6),
+(54, 'Patrick', 10, 1, 1, 7),
+(55, 'Tini ', 30, 2, 1, 7),
+(57, 'bezahl', 10, 1, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -127,6 +159,13 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indizes für die Tabelle `current_debts`
+--
+ALTER TABLE `current_debts`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `current_debts_user_id_uindex` (`user_id`);
+
+--
 -- Indizes für die Tabelle `money_entries`
 --
 ALTER TABLE `money_entries`
@@ -154,10 +193,15 @@ ALTER TABLE `users`
 ALTER TABLE `categories`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT für Tabelle `current_debts`
+--
+ALTER TABLE `current_debts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT für Tabelle `money_entries`
 --
 ALTER TABLE `money_entries`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 --
 -- AUTO_INCREMENT für Tabelle `months`
 --
@@ -171,12 +215,3 @@ ALTER TABLE `users`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-CREATE TABLE haushaltsbuch.current_debts
-(
-    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    user_id INT,
-    value INT
-);
-CREATE UNIQUE INDEX current_debts_user_id_uindex ON haushaltsbuch.current_debts (user_id);
