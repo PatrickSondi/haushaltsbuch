@@ -83,7 +83,7 @@ class HomeController extends BaseController
 
             $moneyEntryMapper->safeMoneyEntry($moneyEntry);
 
-        } else { 
+        } else {
             $this->_helper->Redirector->goToRouteAndExit(array('controller' => 'Users', 'action' => 'login'), null, true);
         }
     }
