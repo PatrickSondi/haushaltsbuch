@@ -1,50 +1,106 @@
- body{
-     background-image: url("/internal/img/footer_lodyas.png");
-     font-family:MetaWebPro;
- }
+body{
+    background-image: url("/internal/img/footer_lodyas.png");
+    font-family:MetaWebPro;
+}
 
- @font-face {
-     font-family: MetaWebPro;
-     src:url("/external/fonts/MetaWebPro-Normal.woff")
- }
+@font-face {
+    font-family: MetaWebPro;
+    src:url("/external/fonts/MetaWebPro-Normal.woff")
+}
 
- .panel{
-     margin-top:30px;
- }
+.panel{
+    margin-top:30px;
+    border:none;
+}
 
- .panel-title{
-     font-weight:bold;
- }
+.panel-main .panel-heading{
+    vertical-align: middle;
+    padding: 0;
+}
 
- .result-container{
+.panel-main .panel-heading .welcome-heading{
+    margin-top:20px;
+    margin-bottom:30px;
+    font-size:23px;
+    display: inline-block;
+}
+
+.panel-title{
+    font-weight:bold;
+}
+
+.result-container{
      min-height:300px;
      padding: 25px;
      display: inline-block;
      width: 87%;
- }
+}
 
- #users-login{
-     margin-top:60px;
- }
+#users-login{
+    margin-top:60px;
+}
 
- .navbar.navbar-inverse{
+#users-login .panel{
+    border-radius: 25px;
+}
+
+#users-login .panel-heading{
+    background-color:#f95252;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    color: #fff;
+    display: inline-block;
+    width: 100%;
+}
+
+#users-login .panel-heading p{
+    float:left;
+    font-size:25px;
+    padding-left:20px;
+    font-weight: lighter;
+}
+
+#users-login .panel-heading .glyphicon-lock{
+    vertical-align: -2px;
+}
+
+#users-login .panel-body {
+    color: #777;
+}
+
+#users-login .panel-body .form-group{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#users-login .panel-body .form-group label{
+    float:left;
+}
+
+#users-login .panel-body .form-group input{
+    background-color: #eee;
+    color: #777;
+}
+
+.navbar.navbar-inverse{
      padding-top: 1px;
      min-height: 39px;
- }
+}
 
- .logout-btn{
-     float:right;
- }
+.logout-btn{
+    float:right;
+}
 
- .month-active{
-     background-color: #e6e6e6;
- }
+.month-active {
+    background-color: #d9534f;
+    border: 1px solid #d43f3a;
+}
 
-.welcome-heading{
-    margin-top:20px;
-    margin-bottom:30px;
-    font-size:23px;
- }
+.month-active:hover{
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+}
 
 .username{
     font-size: 18px;
@@ -54,3 +110,10 @@
 .panel{
     text-align:center;
 }
+
+/*
+.btn-default{
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}*/

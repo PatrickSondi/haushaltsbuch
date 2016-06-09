@@ -267,8 +267,8 @@ th {
 @font-face {
   font-family: 'Glyphicons Halflings';
 
-  src: url('../../../../../../../xampp2/htdocs/haushaltsbuch/public/external/bootstrap/fonts/glyphicons-halflings-regular.eot');
-  src: url('../../../../../../../xampp2/htdocs/haushaltsbuch/public/external/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../../../../../../../xampp2/htdocs/haushaltsbuch/public/external/bootstrap/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../../../../../../../xampp2/htdocs/haushaltsbuch/public/external/bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'), url('../../../../../../../xampp2/htdocs/haushaltsbuch/public/external/bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../../../../../../../xampp2/htdocs/haushaltsbuch/public/external/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('/external/bootstrap/fonts/glyphicons-halflings-regular.eot');
+  src: url('/externa/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/external/bootstrap/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('/external/bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'), url('/external/bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/external/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;
