@@ -16,6 +16,9 @@ body{
 .panel-main .panel-heading{
     vertical-align: middle;
     padding: 0;
+    background-color: #f95252;
+    color: white;
+    margin-bottom: 20px;
 }
 
 .panel-main .panel-heading .welcome-heading{
@@ -88,7 +91,7 @@ body{
 }
 
 .month-active {
-    background-color: #d9534f;
+    background-color: #f95252;
     border: 1px solid #d43f3a;
 }
 
