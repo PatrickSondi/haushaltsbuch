@@ -1,0 +1,112 @@
+<?php
+    $valuePatrick = 0;
+    $valueTini = 0;
+
+    $debts = 0;
+
+    $moneyEntryPatrick = [];
+    $moneyEntryTini = [];
+
+    foreach($this->moneyEntries as $key => $moneyEntry){
+        if($this->escape($moneyEntry['user_id']) == 1){
+            array_push($moneyEntryPatrick, $moneyEntry);
+        }
+    }
+
+    foreach($this->moneyEntries as $key => $moneyEntry){
+        if($this->escape($moneyEntry['user_id']) == 2){
+            array_push($moneyEntryTini, $moneyEntry);
+        }
+    }
+
+    foreach($moneyEntryPatrick as $key => $moneyEntry){
+        $valuePatrick = $valuePatrick + (float) $this->escape($moneyEntry['value']);
+        $valuePatrick = round($valuePatrick, 2);
+    }
+
+    foreach($moneyEntryTini as $key => $moneyEntry){
+        $valueTini = $valueTini + (float) $this->escape($moneyEntry['value']);
+        $valueTini = round($valueTini, 2);
+    }
+
+    if($valuePatrick > $valueTini){
+        $debts = ($valuePatrick - $valueTini) / 2;
+        $debts = round($debts, 2);
+    } else if ($valueTini > $valuePatrick){
+        $debts = ($valueTini - $valuePatrick) / 2;
+        $debts = round($debts, 2);
+    } else {
+        $debts = 0;
+    }
+?>
+
+<div class="col-md-6" id="entries-left">
+    <div class="username">Patrick</div>
+    <table class="table table-striped table-bordered" style="width:100%;">
+        <thead>
+            <td style="font-weight:bold;">Beschreibung</td>
+            <td style="font-weight:bold;">Wert</td>
+        </thead>
+        <tbody>
+            <?php foreach($moneyEntryPatrick as $key => $moneyEntry): ?>
+                <tr>
+                    <td><span style="float:left; cursor:pointer;" class="removeMoneyEntry" aria-hidden="true" id="<?php echo $this->escape($moneyEntry['id']) ?>">X</span><?php echo $this->escape($moneyEntry['description']) ?></td>
+                    <td><?php echo $this->escape($moneyEntry['value']) ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td>
+                <input type="text" class="form-control" style="width:49%; float:left;" id="descPatrick" placeholder="Beschreibung" />
+                <input type="text" class="form-control validateInputValue" style="width:49%; margin-left:2px; float:left;" id="valuePatrick" placeholder="Betrag" />
+            </td>
+            <td><button class="btn btn-default addValuePatrick">Hinzufügen</button></td>
+        </tr>
+            <tr>
+                <td>Gesamter Wert</td>
+                <td><?php echo $valuePatrick ?></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<div class="col-md-6" id="entries-right">
+    <div class="username">Tini</div>
+    <table class="table table-striped table-bordered" style="width:100%;">
+        <thead>
+            <td style="font-weight:bold;">Beschreibung</td>
+            <td style="font-weight:bold;">Wert</td>
+        </thead>
+        <tbody>
+        <?php foreach($moneyEntryTini as $key => $moneyEntry): ?>
+            <tr>
+                <td><span style="float:left; cursor:pointer;" class="removeMoneyEntry" aria-hidden="true" id="<?php echo $this->escape($moneyEntry['id']) ?>">X</span><?php echo $this->escape($moneyEntry['description']) ?></td>
+                <td><?php echo $this->escape($moneyEntry['value']) ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td>
+                    <input type="text" class="form-control" style="width:49%; float:left;" id="descTini" placeholder="Beschreibung" />
+                    <input type="text" class="form-control validateInputValue" style="width:49%; margin-left:2px; float:left;" id="valueTini" placeholder="Betrag" />
+                </td>
+                <td><button class="btn btn-default addValueTini">Hinzufügen</button></td>
+            </tr>
+            <tr>
+                <td>Gesamter Wert</td>
+                <td><?php echo $valueTini ?></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<div>
+    <?php if($valuePatrick > $valueTini): ?>
+        <span>Tini schuldet Patrick: <?php echo $debts ?>&euro;</span>
+    <?php elseif($valueTini > $valuePatrick): ?>
+        <span>Patrick schuldet Tini: <?php echo $debts ?>&euro;</span>
+    <?php endif ?>
+</div>

@@ -1,0 +1,30 @@
+<div id="home" class="row">
+    <div class="col-md-12">
+        <div class="panel">
+            <h4 class="welcome-heading">Willkommen <?php $name = $this->user->getName(); $name = ucfirst($name);  echo $name ?></h4>
+
+            <div class="btn-group" role="group" aria-label="..." style="padding-left: 10px; padding-right: 10px;">
+                <button data-month="1" type="button" class="btn btn-default month-btn">Jänner</button>
+                <button data-month="2" type="button" class="btn btn-default month-btn">Februar</button>
+                <button data-month="3" type="button" class="btn btn-default month-btn">März</button>
+                <button data-month="4" type="button" class="btn btn-default month-btn">April</button>
+                <button data-month="5" type="button" class="btn btn-default month-btn">Mai</button>
+                <button data-month="6" type="button" class="btn btn-default month-btn">Juni</button>
+                <button data-month="7" type="button" class="btn btn-default month-btn">Juli</button>
+                <button data-month="8" type="button" class="btn btn-default month-btn">August</button>
+                <button data-month="9" type="button" class="btn btn-default month-btn">September</button>
+                <button data-month="10" type="button" class="btn btn-default month-btn">Oktober</button>
+                <button data-month="11" type="button" class="btn btn-default month-btn">November</button>
+                <button data-month="12" type="button" class="btn btn-default month-btn">Dezember</button>
+            </div>
+
+            <div id="result" class="result-container">Wähle einen Monat um die Daten anzuzeigen.</div>
+        </div>
+
+        <?php if(isset($this->baseUser)): ?>
+            <a class="btn btn-default logout-btn" role="button" title="Logout" href="<?php echo $this->url(array('controller' => 'Users', 'action' =>'logout'), null, true) ?>">
+                Logout
+            </a>
+        <?php endif; ?>
+    </div>
+</div>

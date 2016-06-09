@@ -1,0 +1,25 @@
+<div class="modal fade" id="pwnewModal" tabindex="-1" role="dialog" aria-labelledby="pwnewModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="pwnewModalLabel">Passwort ändern</h4>
+      </div>
+      <form method="POST" action="<?php echo $this->url(array('controller' => 'Users', 'action' => 'renew-password'), null, true) ?>">
+      	  <div class="modal-body">
+	      		<div class="form-group">
+	      			<label>Neues Passwort eingeben:</label>
+	    			<input class="form-control" type="password" name="pw1"><br>
+    				<label>Passwort erneut eingeben:</label>
+	    	  	<input class="form-control" type="password" name="pw2">
+		        </div>
+	      </div>
+	      <div class="modal-footer">
+        		<a class="btn btn-default" data-dismiss="modal">Abbrechen</a>
+		        <input type="hidden" value="" name="id" />
+		        <button class="btn btn-primary-own" type="submit">Bestätigen</button>
+	      </div>
+      </form>
+    </div>
+  </div>
+</div>

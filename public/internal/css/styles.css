@@ -1,0 +1,56 @@
+ body{
+     background-image: url("/internal/img/footer_lodyas.png");
+     font-family:MetaWebPro;
+ }
+
+ @font-face {
+     font-family: MetaWebPro;
+     src:url("/external/fonts/MetaWebPro-Normal.woff")
+ }
+
+ .panel{
+     margin-top:30px;
+ }
+
+ .panel-title{
+     font-weight:bold;
+ }
+
+ .result-container{
+     min-height:300px;
+     padding: 25px;
+     display: inline-block;
+     width: 87%;
+ }
+
+ #users-login{
+     margin-top:60px;
+ }
+
+ .navbar.navbar-inverse{
+     padding-top: 1px;
+     min-height: 39px;
+ }
+
+ .logout-btn{
+     float:right;
+ }
+
+ .month-active{
+     background-color: #e6e6e6;
+ }
+
+.welcome-heading{
+    margin-top:20px;
+    margin-bottom:30px;
+    font-size:23px;
+ }
+
+.username{
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.panel{
+    text-align:center;
+}

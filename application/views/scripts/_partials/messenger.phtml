@@ -1,0 +1,36 @@
+<?php if($this->flashMessenger->hasMessages()): ?>
+	<?php foreach($this->flashMessenger->getMessages() as $key => $message): ?>
+		<?php if($message['type'] == 'success'): ?>
+			<div class="alert alert-success" role="alert">
+				<b><?php echo $message['title'] ?></b>
+				<br />
+				<?php echo $message['message'] ?>
+			</div>
+		<?php elseif($message['type'] == 'error'): ?>
+			<div class="alert alert-danger" role="alert">
+				<b><?php echo $message['title'] ?></b>
+				<br />
+				<?php echo $message['message'] ?>
+			</div>
+		<?php endif; ?>
+	<?php endforeach; ?>
+<?php endif; ?>
+<?php if($this->flashMessenger->hasCurrentMessages()): ?>
+	<?php foreach($this->flashMessenger->getCurrentMessages() as $key => $message): ?>
+		<?php if($message['type'] == 'success'): ?>
+			<div class="alert alert-success" role="alert">
+				<b><?php echo $message['title'] ?></b>
+				<br />
+				<?php echo $message['message'] ?>
+			</div>
+		<?php elseif($message['type'] == 'error'): ?>
+			<div class="alert alert-danger" role="alert">
+				<b><?php echo $message['title'] ?></b>
+				<br />
+				<?php echo $message['message'] ?>
+			</div>
+		<?php endif; ?>
+	<?php endforeach; ?>
+<?php endif; ?>
+
+<?php $this->flashMessenger->clearCurrentMessages(); ?>

@@ -1,0 +1,29 @@
+<?php echo $this->doctype('HTML5') ?>
+
+<html lang="de">
+
+    <head>
+        <link rel="shortcut icon" href="/internal/img/book-icon.png" type="image/x-icon">
+        <title>Haushaltsbuch</title>
+        <?php	echo $this->headLink();
+        echo $this->headMeta()->setCharset('UTF-8')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0');
+        //@Notice if you have problems with zoom on focuse input on mobile devicesuse this instead
+
+        /*echo $this->headMeta()->setCharset('UTF-8')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ->appendName('viewport', 'initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width');*/
+        ?>
+    </head>
+    
+    <body>
+        <div class="container">
+            <?php echo $this->layout()->content; ?>
+        </div>
+
+        <?php echo $this->headScript() ?>
+        <?php echo $this->partial('_partials/pwnewmodal.phtml', array()) ?>
+    </body>
+
+</html>
