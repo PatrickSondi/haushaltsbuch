@@ -31,6 +31,15 @@ class Models_Mapper_MoneyEntry
 
         return $select->query()->fetchAll();
     }
+
+    public function getAllMoneyEntries()
+    {
+        $table = new Models_Db_MoneyEntry();
+
+        $select = $table->select();
+
+        return $select->query()->fetchAll();
+    }
     
     public function safeMoneyEntry(Models_MoneyEntry $moneyEntry)
     {

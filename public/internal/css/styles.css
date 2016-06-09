@@ -98,6 +98,12 @@ body{
     border-color: #ac2925;
 }
 
+.month-active:focus{
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+}
+
 .username{
     font-size: 18px;
     margin-bottom: 15px;

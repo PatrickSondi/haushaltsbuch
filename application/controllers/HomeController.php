@@ -35,22 +35,34 @@ class HomeController extends BaseController
         {
             $this->_helper->layout->disableLayout();
 
-            if (isset($_GET['moneyentryid'])){
-                $moneyEntryId = $_GET['moneyentryid'];
-
-                $moneyEntryMapper = new Models_Mapper_MoneyEntry();
-                
-                $moneyEntryMapper->deleteMoneyEntryById($moneyEntryId);
-            }
-
             $monthId = $_GET['month'];
 
             $moneyEntryMapper = new Models_Mapper_MoneyEntry();
+            $currentDebtsMapper = new Models_Mapper_CurrentDebts();
 
             $moneyEntries = $moneyEntryMapper->getByMonthsId($monthId);
 
-            $this->view->moneyEntries = $moneyEntries;
+            $allMoneyEntries = $moneyEntryMapper->getAllMoneyEntries();
 
+            $valuePatrick = 0;
+            $valueTini = 0;
+
+            foreach($allMoneyEntries as $entry){
+                if($entry['user_id'] == 1) {
+                    $valuePatrick = $valuePatrick + $entry['value'];
+                }
+                else
+                {
+                    $valueTini = $valueTini + $entry['value'];
+                }
+            }
+
+            $currentDebtsMapper->saveByUser_id(1, $valuePatrick);
+            $currentDebtsMapper->saveByUser_id(2, $valueTini);
+            
+            $this->view->moneyEntries = $moneyEntries;
+            $this->view->valueTini = $valueTini;
+            $this->view->valuePatrick = $valuePatrick;
         } else {
             $this->_helper->Redirector->goToRouteAndExit(array('controller' => 'Users', 'action' => 'login'), null, true);
         }

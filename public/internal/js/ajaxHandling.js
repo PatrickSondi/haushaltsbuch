@@ -112,7 +112,7 @@ var ajaxHandling = {};
                 }
             };
 
-            xmlhttp.open("GET", "/home/months/?moneyentryid=" + moneyEntryId, true);
+            xmlhttp.open("GET", "/home/delete/?moneyentryid=" + moneyEntryId, true);
             xmlhttp.send();
         }
         

@@ -38,6 +38,21 @@
     } else {
         $debts = 0;
     }
+
+
+    $valuePatrickAll = $this->valuePatrick;
+    $valueTiniAll = $this->valueTini;
+    $debtsAll = 0;
+
+    if($valuePatrickAll > $valueTiniAll){
+        $debtsAll = ($valuePatrickAll - $valueTiniAll) / 2;
+        $debtsAll = round($debtsAll, 2);
+    } else if ($valueTiniAll > $valuePatrickAll){
+        $debtsAll = ($valueTiniAll - $valuePatrickAll) / 2;
+        $debtsAll = round($debtsAll, 2);
+    } else {
+        $debtsAll = 0;
+    }
 ?>
 
 <div class="col-md-6" id="entries-left">
@@ -50,7 +65,7 @@
         <tbody>
             <?php foreach($moneyEntryPatrick as $key => $moneyEntry): ?>
                 <tr>
-                    <td><span style="float:left; cursor:pointer;" class="removeMoneyEntry" aria-hidden="true" id="<?php echo $this->escape($moneyEntry['id']) ?>">X</span><?php echo $this->escape($moneyEntry['description']) ?></td>
+                    <td><span style="float:left; cursor:pointer;" class="glyphicon glyphicon-remove removeMoneyEntry" aria-hidden="true" id="<?php echo $this->escape($moneyEntry['id']) ?>"></span><?php echo $this->escape($moneyEntry['description']) ?></td>
                     <td><?php echo $this->escape($moneyEntry['value']) ?></td>
                 </tr>
             <?php endforeach; ?>
@@ -81,7 +96,7 @@
         <tbody>
         <?php foreach($moneyEntryTini as $key => $moneyEntry): ?>
             <tr>
-                <td><span style="float:left; cursor:pointer;" class="removeMoneyEntry" aria-hidden="true" id="<?php echo $this->escape($moneyEntry['id']) ?>">X</span><?php echo $this->escape($moneyEntry['description']) ?></td>
+                <td><span style="float:left; cursor:pointer;" class="glyphicon glyphicon-remove removeMoneyEntry" aria-hidden="true" id="<?php echo $this->escape($moneyEntry['id']) ?>"></span><?php echo $this->escape($moneyEntry['description']) ?></td>
                 <td><?php echo $this->escape($moneyEntry['value']) ?></td>
             </tr>
         <?php endforeach; ?>
@@ -105,8 +120,16 @@
 
 <div>
     <?php if($valuePatrick > $valueTini): ?>
-        <span>Tini schuldet Patrick: <?php echo $debts ?>&euro;</span>
+        <span>Tini schuldet Patrick (dieser Monat): <?php echo $debts ?>&euro;</span>
     <?php elseif($valueTini > $valuePatrick): ?>
-        <span>Patrick schuldet Tini: <?php echo $debts ?>&euro;</span>
+        <span>Patrick schuldet Tini (dieser Monat): <?php echo $debts ?>&euro;</span>
+    <?php endif ?>
+</div>
+
+<div>
+    <?php if($valuePatrickAll > $valueTiniAll): ?>
+        <span>Tini schuldet Patrick (insgesamt): <?php echo $debtsAll ?>&euro;</span>
+    <?php elseif($valueTiniAll > $valuePatrickAll): ?>
+        <span>Patrick schuldet Tini (insgesamt): <?php echo $debtsAll ?>&euro;</span>
     <?php endif ?>
 </div>

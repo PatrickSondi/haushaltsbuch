@@ -24,7 +24,7 @@
         </div>
 
         <?php if(isset($this->baseUser)): ?>
-            <a class="btn btn-default logout-btn" role="button" title="Logout" href="<?php echo $this->url(array('controller' => 'Users', 'action' =>'logout'), null, true) ?>">
+            <a class="btn btn-primary logout-btn" role="button" title="Logout" href="<?php echo $this->url(array('controller' => 'Users', 'action' =>'logout'), null, true) ?>">
                 Logout
             </a>
         <?php endif; ?>
