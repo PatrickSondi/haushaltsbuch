@@ -6,6 +6,7 @@ var ajaxHandling = {};
             monthBtnClick: monthBtnClick,
             addEntryTini: addEntryTini,
             addEntryPatrick: addEntryPatrick,
+            payDebt: payDebt,
             deleteEntry: deleteEntry
         }
         
@@ -92,11 +93,45 @@ var ajaxHandling = {};
             xmlhttp.open("GET", "/home/add/?value=" + value + "&month=" + month + "&desc=" + desc + "&userid=1", true);
             xmlhttp.send();
         }
+
+        function payDebt($this){
+            var xmlhttp = new XMLHttpRequest();
+
+            var month = $(".month-active").attr("data-month");
+            var input = $this.next('input');
+            var userId = 0;
+
+            if(input.attr("data-fromto") == "TiniToPatrick")
+            {
+                userId = 1;
+            } else {
+                userId = 2;
+            }
+
+            var value = input.val();
+
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    xmlhttp.onreadystatechange = function() {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            document.getElementById("result").innerHTML = xmlhttp.responseText;
+                        }
+                    };
+
+                    xmlhttp.open("GET", "/home/months/?month=" + month, true);
+                    xmlhttp.send();
+                }
+            };
+
+            xmlhttp.open("GET", "/home/paydebt/?value=" + value + "&userid=" + userId, true);
+            xmlhttp.send();
+        }
         
         function deleteEntry($this) {
             var xmlhttp = new XMLHttpRequest();
 
             var moneyEntryId = $this.attr('id');
+            var userId = $this.attr('data-userId');
             var month = $(".month-active").attr("data-month");
 
             xmlhttp.onreadystatechange = function() {
@@ -112,7 +147,7 @@ var ajaxHandling = {};
                 }
             };
 
-            xmlhttp.open("GET", "/home/delete/?moneyentryid=" + moneyEntryId, true);
+            xmlhttp.open("GET", "/home/delete/?moneyentryid=" + moneyEntryId + "&userid=" + userId, true);
             xmlhttp.send();
         }
         

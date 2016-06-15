@@ -34,5 +34,10 @@ $(document).ready(function() {
     //click handler for deleting money entry
     $(document).on('click', '.removeMoneyEntry', function(){
         ajaxHandling.deleteEntry($(this));
-    })
+    });
+
+    //click handler for paying debt
+    $(document).on('click', '.debtsPayBtn', function(){
+        ajaxHandling.payDebt($(this));
+    });
 })

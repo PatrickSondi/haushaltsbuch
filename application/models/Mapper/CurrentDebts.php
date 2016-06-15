@@ -24,10 +24,31 @@ class Models_Mapper_CurrentDebts
     }
 
     public function getAll(){
+        $table = new Models_Db_CurrentDebts();
 
+        $select = $table->select();
+
+        return $select->query()->fetchAll();
     }
 
-    public function saveByUser_id($userid, $value){
+    public function getByUserId($userid)
+    {
+        $row = $this->getTable()->fetchRow('user_id ="'.$userid.'"');
+
+        if($row == false)
+        {
+            return false;
+        }
+
+        $debts = new Models_CurrentDebts();
+        $debts	->setId($row->id)
+                ->setUser_id($row->user_id)
+                ->setValue($row->value);
+
+        return $debts;
+    }
+
+    public function update($userid, $value){
         $data = array(
             'value'			=> $value
         );

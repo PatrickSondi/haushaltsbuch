@@ -67,4 +67,18 @@ class Models_Mapper_MoneyEntry
 
         $table->delete($data);
     }
+
+    public function getMoneyEntryById($moneyEntryId){
+        $row = $this->getTable()->fetchRow('id ="'.$moneyEntryId.'"');
+
+        if($row == false)
+        {
+            return false;
+        }
+
+        $moneyEntry = new Models_MoneyEntry();
+        $moneyEntry ->setValue($row->value);
+
+        return $moneyEntry;
+    }
 }

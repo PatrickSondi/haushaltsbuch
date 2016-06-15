@@ -42,12 +42,12 @@ class HomeController extends BaseController
 
             $moneyEntries = $moneyEntryMapper->getByMonthsId($monthId);
 
-            $allMoneyEntries = $moneyEntryMapper->getAllMoneyEntries();
+            $currentDebts = $currentDebtsMapper->getAll();
 
             $valuePatrick = 0;
             $valueTini = 0;
 
-            foreach($allMoneyEntries as $entry){
+            foreach($currentDebts as $entry){
                 if($entry['user_id'] == 1) {
                     $valuePatrick = $valuePatrick + $entry['value'];
                 }
@@ -57,8 +57,6 @@ class HomeController extends BaseController
                 }
             }
 
-            $currentDebtsMapper->saveByUser_id(1, $valuePatrick);
-            $currentDebtsMapper->saveByUser_id(2, $valueTini);
             
             $this->view->moneyEntries = $moneyEntries;
             $this->view->valueTini = $valueTini;
@@ -84,8 +82,23 @@ class HomeController extends BaseController
             $userId = $_GET['userid'];
 
             $moneyEntryMapper = new Models_Mapper_MoneyEntry();
-
             $moneyEntry = new Models_MoneyEntry();
+            $currentDebtsMapper = new Models_Mapper_CurrentDebts();
+
+            if($userId == 1)
+            {
+                $currentValue = $currentDebtsMapper->getByUserId(1);
+
+                $valueToSafe = $currentValue->getValue() + $value;
+
+                $currentDebtsMapper->update(1, $valueToSafe);
+            } else {
+                $currentValue = $currentDebtsMapper->getByUserId(2);
+
+                $valueToSafe = $currentValue->getValue() + $value;
+
+                $currentDebtsMapper->update(2, $valueToSafe);
+            }
 
             $moneyEntry->setMonth_id($monthId);
             $moneyEntry->setValue($value);
@@ -109,9 +122,62 @@ class HomeController extends BaseController
 
             $moneyEntryId = $_GET['moneyentryid'];
 
+            $userId = $_GET['userid'];
+
             $moneyEntryMapper = new Models_Mapper_MoneyEntry();
+            $currentDebtsMapper = new Models_Mapper_CurrentDebts();
+            
+            $moneyEntry = $moneyEntryMapper->getMoneyEntryById($moneyEntryId);
+
+            if($userId == 1)
+            {
+                $currentValue = $currentDebtsMapper->getByUserId(1);
+
+                $valueToSafe = $currentValue->getValue() - $moneyEntry->getValue();
+
+                $currentDebtsMapper->update(1, $valueToSafe);
+            } else {
+                $currentValue = $currentDebtsMapper->getByUserId(1);
+
+                $valueToSafe = $currentValue->getValue() +  $moneyEntry->getValue();
+
+                $currentDebtsMapper->update(2, $valueToSafe);
+            }
 
             $moneyEntryMapper->deleteMoneyEntryById($moneyEntryId);
+
+        } else {
+            $this->_helper->Redirector->goToRouteAndExit(array('controller' => 'Users', 'action' => 'login'), null, true);
+        }
+    }
+
+    public function paydebtAction(){
+        $auth = Zend_Auth::getInstance();
+
+        if($auth->hasIdentity())
+        {
+            $this->_helper->layout->disableLayout();
+
+            $value = $_GET['value'];
+
+            $userId = $_GET['userid'];
+
+            $currentDebtsMapper = new Models_Mapper_CurrentDebts();
+            
+            if($userId == 1)
+            {
+                $currentValue = $currentDebtsMapper->getByUserId(1);
+
+                $valueToSafe = $currentValue->getValue() - $value*2;
+
+                $currentDebtsMapper->update(1, $valueToSafe);
+            } else {
+                $currentValue = $currentDebtsMapper->getByUserId(2);
+
+                $valueToSafe = $currentValue->getValue() - $value*2;
+
+                $currentDebtsMapper->update(2, $valueToSafe);
+            }
 
         } else {
             $this->_helper->Redirector->goToRouteAndExit(array('controller' => 'Users', 'action' => 'login'), null, true);
