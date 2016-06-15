@@ -14,6 +14,8 @@ class Models_MoneyEntry
 
     protected $month_id = NULL;
 
+    protected $payed = NULL;
+
     public function __construct(array $options = null)
     {
         if(is_array($options))
@@ -122,5 +124,16 @@ class Models_MoneyEntry
     public function getMonth_id()
     {
         return $this->month_id;
+    }
+
+    public function setPayed($payed)
+    {
+        $this->payed = (string) $payed;
+        return $this;
+    }
+
+    public function getPayed()
+    {
+        return $this->payed;
     }
 }

@@ -105,6 +105,7 @@ class HomeController extends BaseController
             $moneyEntry->setDescription($desc);
             $moneyEntry->setUser_id($userId);
             $moneyEntry->setCategory_id(1);
+            $moneyEntry->setPayed(0);
 
             $moneyEntryMapper->safeMoneyEntry($moneyEntry);
 
@@ -128,7 +129,7 @@ class HomeController extends BaseController
             $currentDebtsMapper = new Models_Mapper_CurrentDebts();
             
             $moneyEntry = $moneyEntryMapper->getMoneyEntryById($moneyEntryId);
-
+            
             if($userId == 1)
             {
                 $currentValue = $currentDebtsMapper->getByUserId(1);
@@ -137,9 +138,9 @@ class HomeController extends BaseController
 
                 $currentDebtsMapper->update(1, $valueToSafe);
             } else {
-                $currentValue = $currentDebtsMapper->getByUserId(1);
+                $currentValue = $currentDebtsMapper->getByUserId(2);
 
-                $valueToSafe = $currentValue->getValue() +  $moneyEntry->getValue();
+                $valueToSafe = $currentValue->getValue() -  $moneyEntry->getValue();
 
                 $currentDebtsMapper->update(2, $valueToSafe);
             }
@@ -163,6 +164,7 @@ class HomeController extends BaseController
             $userId = $_GET['userid'];
 
             $currentDebtsMapper = new Models_Mapper_CurrentDebts();
+            $moneyEntryMapper = new Models_Mapper_MoneyEntry();
             
             if($userId == 1)
             {
@@ -179,6 +181,7 @@ class HomeController extends BaseController
                 $currentDebtsMapper->update(2, $valueToSafe);
             }
 
+            $moneyEntryMapper->updatePayed();
         } else {
             $this->_helper->Redirector->goToRouteAndExit(array('controller' => 'Users', 'action' => 'login'), null, true);
         }

@@ -48,7 +48,8 @@ class Models_Mapper_MoneyEntry
             'value'		    => $moneyEntry->getValue(),
             'user_id'		=> $moneyEntry->getUser_id(),
             'category_id'   => $moneyEntry->getCategory_id(),
-            'month_id'		=> $moneyEntry->getMonth_id()
+            'month_id'		=> $moneyEntry->getMonth_id(),
+            'payed'         => $moneyEntry->getPayed()
         );
 
         if(null === ($id = $moneyEntry->getId()))
@@ -80,5 +81,12 @@ class Models_Mapper_MoneyEntry
         $moneyEntry ->setValue($row->value);
 
         return $moneyEntry;
+    }
+
+    public function updatePayed(){
+        $data = array(
+            'payed'			=> 1
+        );
+        $this->getTable()->update($data);
     }
 }

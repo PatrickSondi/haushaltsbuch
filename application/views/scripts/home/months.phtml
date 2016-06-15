@@ -65,7 +65,12 @@
         <tbody>
             <?php foreach($moneyEntryPatrick as $key => $moneyEntry): ?>
                 <tr>
-                    <td><span style="float:left; cursor:pointer;" class="glyphicon glyphicon-remove removeMoneyEntry" aria-hidden="true" data-userId="1" id="<?php echo $this->escape($moneyEntry['id']) ?>"></span><?php echo $this->escape($moneyEntry['description']) ?></td>
+                    <td>
+                        <?php if($this->escape($moneyEntry['payed'] == 0)): ?>
+                            <span style="float:left; cursor:pointer;" class="glyphicon glyphicon-remove removeMoneyEntry" aria-hidden="true" data-userId="1" id="<?php echo $this->escape($moneyEntry['id']) ?>"></span>
+                        <?php endif; ?>
+                        <?php echo $this->escape($moneyEntry['description']) ?>
+                    </td>
                     <td><?php echo $this->escape($moneyEntry['value']) ?></td>
                 </tr>
             <?php endforeach; ?>
@@ -96,7 +101,12 @@
         <tbody>
         <?php foreach($moneyEntryTini as $key => $moneyEntry): ?>
             <tr>
-                <td><span style="float:left; cursor:pointer;" class="glyphicon glyphicon-remove removeMoneyEntry" aria-hidden="true" data-userId="2" id="<?php echo $this->escape($moneyEntry['id']) ?>"></span><?php echo $this->escape($moneyEntry['description']) ?></td>
+                <td>
+                    <?php if($this->escape($moneyEntry['payed'] == 0)): ?>
+                        <span style="float:left; cursor:pointer;" class="glyphicon glyphicon-remove removeMoneyEntry" aria-hidden="true" data-userId="2" id="<?php echo $this->escape($moneyEntry['id']) ?>"></span>
+                    <?php endif; ?>
+                    <?php echo $this->escape($moneyEntry['description']) ?>
+                </td>
                 <td><?php echo $this->escape($moneyEntry['value']) ?></td>
             </tr>
         <?php endforeach; ?>
