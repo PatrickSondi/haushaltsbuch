@@ -57,17 +57,17 @@
 
 <div class="col-md-6" id="entries-left">
     <div class="username">Patrick</div>
-    <table class="table table-striped table-bordered" style="width:100%;">
-        <thead>
-            <td style="font-weight:bold;">Beschreibung</td>
-            <td style="font-weight:bold;">Wert</td>
-        </thead>
+    <table class="table table-striped table-bordered entries-table">
         <tbody>
+            <tr class="first-tr">
+                <td>Beschreibung</td>
+                <td>Wert</td>
+            </tr>
             <?php foreach($moneyEntryPatrick as $key => $moneyEntry): ?>
                 <tr>
                     <td>
                         <?php if($this->escape($moneyEntry['payed'] == 0)): ?>
-                            <span style="float:left; cursor:pointer;" class="glyphicon glyphicon-remove removeMoneyEntry" aria-hidden="true" data-userId="1" id="<?php echo $this->escape($moneyEntry['id']) ?>"></span>
+                            <span class="glyphicon glyphicon-remove removeMoneyEntry" aria-hidden="true" data-userId="1" id="<?php echo $this->escape($moneyEntry['id']) ?>"></span>
                         <?php endif; ?>
                         <?php echo $this->escape($moneyEntry['description']) ?>
                     </td>
@@ -78,8 +78,8 @@
         <tfoot>
         <tr>
             <td>
-                <input type="text" class="form-control" style="width:49%; float:left;" id="descPatrick" placeholder="Beschreibung" />
-                <input type="text" class="form-control validateInputValue" style="width:49%; margin-left:2px; float:left;" id="valuePatrick" placeholder="Betrag" />
+                <input type="text" class="form-control new-money-entry" id="descPatrick" placeholder="Beschreibung" />
+                <input type="text" class="form-control new-money-entry validateInputValue" id="valuePatrick" placeholder="Betrag" />
             </td>
             <td><button class="btn btn-primary addValuePatrick">Hinzufügen</button></td>
         </tr>
@@ -93,30 +93,30 @@
 
 <div class="col-md-6" id="entries-right">
     <div class="username">Tini</div>
-    <table class="table table-striped table-bordered" style="width:100%;">
-        <thead>
-            <td style="font-weight:bold;">Beschreibung</td>
-            <td style="font-weight:bold;">Wert</td>
-        </thead>
+    <table class="table table-striped table-bordered entries-table">
         <tbody>
-        <?php foreach($moneyEntryTini as $key => $moneyEntry): ?>
-            <tr>
-                <td>
-                    <?php if($this->escape($moneyEntry['payed'] == 0)): ?>
-                        <span style="float:left; cursor:pointer;" class="glyphicon glyphicon-remove removeMoneyEntry" aria-hidden="true" data-userId="2" id="<?php echo $this->escape($moneyEntry['id']) ?>"></span>
-                    <?php endif; ?>
-                    <?php echo $this->escape($moneyEntry['description']) ?>
-                </td>
-                <td><?php echo $this->escape($moneyEntry['value']) ?></td>
+            <tr class="first-tr">
+                <td>Beschreibung</td>
+                <td>Wert</td>
             </tr>
-        <?php endforeach; ?>
+            <?php foreach($moneyEntryTini as $key => $moneyEntry): ?>
+                <tr>
+                    <td>
+                        <?php if($this->escape($moneyEntry['payed'] == 0)): ?>
+                            <span class="glyphicon glyphicon-remove removeMoneyEntry" aria-hidden="true" data-userId="2" id="<?php echo $this->escape($moneyEntry['id']) ?>"></span>
+                        <?php endif; ?>
+                        <?php echo $this->escape($moneyEntry['description']) ?>
+                    </td>
+                    <td><?php echo $this->escape($moneyEntry['value']) ?></td>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
 
         <tfoot>
             <tr>
                 <td>
-                    <input type="text" class="form-control" style="width:49%; float:left;" id="descTini" placeholder="Beschreibung" />
-                    <input type="text" class="form-control validateInputValue" style="width:49%; margin-left:2px; float:left;" id="valueTini" placeholder="Betrag" />
+                    <input type="text" class="form-control new-money-entry" id="descTini" placeholder="Beschreibung" />
+                    <input type="text" class="form-control new-money-entry validateInputValue" id="valueTini" placeholder="Betrag" />
                 </td>
                 <td><button class="btn btn-primary addValueTini">Hinzufügen</button></td>
             </tr>
@@ -145,7 +145,7 @@
         <span>Patrick schuldet Tini (insgesamt): <?php echo $debtsAll ?>&euro;</span>
         <button class="btn btn-primary debtsPayBtn">Hinzufügen</button>
         <input type="text" data-fromTo="PatrickToTini" class="form-control validateInputValue" id="debtsPayInput" placeholder="Betrag" />
-    <? else: ?>
+    <?php else: ?>
         <span>Keine Schulden offen.</span>
     <?php endif ?>
 </div>

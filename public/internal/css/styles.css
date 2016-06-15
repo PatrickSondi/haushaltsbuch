@@ -112,6 +112,31 @@ body{
     margin-bottom: 15px;
 }
 
+.entries-table .first-tr{
+    border-bottom: 2px solid #ddd;
+    background-color: #f2f2f2
+}
+
+.entries-table .first-tr td{
+    font-weight: bold;
+}
+
+.entries-table .removeMoneyEntry{
+    float:left;
+    cursor:pointer;
+}
+
+.entries-table .new-money-entry{
+    width:49%;
+    float:left;
+}
+
+.entries-table .new-money-entry.validateInputValue{
+    width:49%;
+    margin-left:2px;
+    float:left;
+}
+
 .panel{
     text-align:center;
 }
@@ -121,7 +146,7 @@ body{
     width: 808px;
     padding-top: 10px;
     margin-top: 20px;
-    border-top: 1px solid black;
+    border-top: 1px solid #ddd;
 }
 
 .debtsPayArea input{
