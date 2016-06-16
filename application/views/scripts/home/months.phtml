@@ -76,13 +76,13 @@
             <?php endforeach; ?>
         </tbody>
         <tfoot>
-        <tr>
-            <td>
-                <input type="text" class="form-control new-money-entry" id="descPatrick" placeholder="Beschreibung" />
-                <input type="text" class="form-control new-money-entry validateInputValue" id="valuePatrick" placeholder="Betrag" />
-            </td>
-            <td><button class="btn btn-primary addValuePatrick">Hinzufügen</button></td>
-        </tr>
+            <tr>
+                <td>
+                    <input type="text" class="form-control new-money-entry" id="descPatrick" placeholder="Beschreibung" />
+                    <input type="text" class="form-control new-money-entry validateInputValue" id="valuePatrick" placeholder="Betrag" />
+                </td>
+                <td><button class="btn btn-primary addValuePatrick">Hinzufügen</button></td>
+            </tr>
             <tr>
                 <td>Gesamter Wert</td>
                 <td><?php echo $valuePatrick ?></td>
@@ -111,7 +111,6 @@
                 </tr>
             <?php endforeach; ?>
         </tbody>
-
         <tfoot>
             <tr>
                 <td>
@@ -128,7 +127,7 @@
     </table>
 </div>
 
-<div style="display: inline-block; width: 808px;">
+<div class="debtsArea">
     <?php if($valuePatrick > $valueTini): ?>
         <span>Tini schuldet Patrick (dieser Monat): <?php echo $debts ?>&euro;</span>
     <?php elseif($valueTini > $valuePatrick): ?>
